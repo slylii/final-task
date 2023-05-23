@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    image: python:3.9
+    container_name: db
+    volumes:
+      - ./data/db.sqlite3:/app/db.sqlite3
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+
+  migrations:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: migrations
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: python manage.py migrate

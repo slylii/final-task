@@ -1,0 +1,10 @@
+resources:
+  - deployment.yml
+  - service.yml
+  - postgres-deployment.yml
+  - postgres-service.yml
+  - secret.yml
+
+images:
+  - name: admindevopsfinal/devopsimage
+    newTag: latest

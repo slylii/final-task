@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: eostrovatikova-certificate
+spec:
+  dnsNames:
+  - 'eostrovatikova.dacdevops.ru'
+  issuerRef:
+    kind: ClusterIssuer
+    name: yc-clusterissuer
+  secretName: eostrovatikova-cert

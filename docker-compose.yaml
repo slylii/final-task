@@ -1,12 +1,6 @@
 version: '3'
 
 services:
-  db:
-    image: python:3.9
-    container_name: db
-    volumes:
-      - ./data/db.sqlite3:/app/db.sqlite3
-
   app:
     build:
       context: .
@@ -30,3 +24,14 @@ services:
     volumes:
       - .:/app
     command: python manage.py migrate
+    
+  db:
+    image: postgres:15.2
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:

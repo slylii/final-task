@@ -1,30 +1,28 @@
-version: '3'
-
 services:
-  app:
+  sampleapp:
+    restart: always
+    image: devopsimage:latest
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
-    depends_on:
-      - db
-    volumes:
-      - .:/app
     ports:
-      - "8000:8000"
-    command: python manage.py runserver 0.0.0.0:8000
-
-  migrations:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: migrations
+      - 8000:8000
+    env_file:
+      - .env
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "sampleproject.wsgi"]
     depends_on:
-      - db
-    volumes:
-      - .:/app
-    command: python manage.py migrate
-    
+    - db
+
+  migrate:
+    image: devopsimage:latest
+    profiles:
+      - migrate
+    env_file:
+      - .env
+    command: ["python", "manage.py", "migrate"]
+    depends_on:
+    - db
+
   db:
     image: postgres:15.2
     restart: always

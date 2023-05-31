@@ -1,9 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
 resources:
-  - deployment.yml
-  - service.yml
-  - postgres-deployment.yml
-  - postgres-service.yml
-  - secret.yml
+  - deployment.yaml
+  - service.yaml
+  - postgres-deployment.yaml
+  - postgres-service.yaml
+  - secret.yaml
 
 images:
   - name: admindevopsfinal/devopsimage

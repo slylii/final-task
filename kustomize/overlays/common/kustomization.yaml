@@ -11,6 +11,6 @@ images:
 
 resources:
 - ../../base
-- namespace.yml
-- ingress.yml
-- certificate.yml
+- namespace.yaml
+- ingress.yaml
+- certificate.yaml

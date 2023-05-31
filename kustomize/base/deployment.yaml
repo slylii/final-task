@@ -14,7 +14,7 @@ spec:
     spec:
       initContainers:
         - name: sampleapp-migrate
-          image: admindevopsfinal/devopsimage
+          image: admindevopsfinal/devopsimage:latest
           command: ["python", "manage.py", "migrate"]
           ports:
             - containerPort: 8000
@@ -23,7 +23,7 @@ spec:
                 name: sampleapp-secret
       containers:
         - name: sampleapp
-          image: admindevopsfinal/devopsimage
+          image: admindevopsfinal/devopsimage:latest
           command: ["gunicorn", "--bind", "0.0.0.0:8000", "sampleproject.wsgi"]
           ports:
             - containerPort: 8000

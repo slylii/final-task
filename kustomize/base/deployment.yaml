@@ -16,8 +16,6 @@ spec:
         - name: sampleapp-migrate
           image: admindevopsfinal/devopsimage
           command: ["python", "manage.py", "migrate"]
-          ports:
-            - containerPort: 8000
           envFrom:
             - secretRef:
                 name: sampleapp-secret

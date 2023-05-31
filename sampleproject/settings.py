@@ -29,7 +29,7 @@ SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be us
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.49.2', '127.0.0.1', 'localhost', 'eostrovatikova.dacdevops.ru']
 DEBUG = True
 
 # Application definition
